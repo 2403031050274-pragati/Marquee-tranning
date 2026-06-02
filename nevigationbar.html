@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Navigation Using Flexbox</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: grey;
+      padding: 15px 40px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .circle-one {
+      background: yellow;
+    }
+
+    .circle-two {
+      background: lightblue;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+
+    .nav-links a:hover {
+      background: yellow;
+      color: black;
+      border-radius: 5px;
+    }
+    .circle-two {
+      background: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo-box">
+      <div class="circle circle-one"></div>
+      <div class="circle circle-two"></div>
+      </div>
+
+    <ul class="nav-links">
+      <li><a href="https://www.google.com">Google</a></li>
+      <li><a href="https://www.youtube.com">YouTube</a></li>
+      <li><a href="https://www.facebook.com">Facebook</a></li>
+      <li><a href="https://www.instagram.com">Instagram</a></li>
+      <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
