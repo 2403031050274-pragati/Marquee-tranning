@@ -1,301 +1,388 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BookMyShow </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookMyShow</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial;
-      background-color: lightgray;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f7;
+      color: #1f2933;
     }
 
     .header {
       display: flex;
-      background-color: white;
-      padding: 15px;
-      gap: 10px;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 6%;
+      background: white;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     }
 
     .logo {
-      width: 150px;
-      border: 2px solid black;
-      padding: 15px;
-      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #e63946;
     }
-  .logo img{
-    width: 100%;
-    height: 100%;
-  }
+
     .search {
       flex: 1;
-      border: 2px solid black;
-      padding: 15px;
-      text-align: center;
-    
     }
-.search img{
-  width: 50%;
-    height: 50%;
-}
+
+    .search input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #d5d8dc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
     .city {
-      width: 100px;
-      border: 2px solid black;
-      padding: 15px;
-      text-align: center;
-      
+      background: #f1f3f5;
+      color: #1f2933;
     }
 
     .signin {
-      width: 100px;
-      border: 2px solid black;
-      padding: 15px;
-      text-align: center;
+      background: #e63946;
+      color: white;
     }
 
     .menu {
       display: flex;
-      background-color: #eeeeee;
-      padding: 10px;
-      gap: 10px;
+      gap: 24px;
+      padding: 12px 6%;
+      background: white;
+      border-top: 1px solid #eee;
     }
 
-    .menu div {
-      border: 2px solid black;
-      padding: 10px;
-      background-color: white;
+    .menu a {
+      text-decoration: none;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    .menu a:hover {
+      color: #e63946;
     }
 
     .banner {
-      margin: 20px;
-      height: 300px;
-      border: 2px solid black;
-      background-color: white;
+      margin: 26px 6%;
+      min-height: 300px;
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(20, 25, 35, 0.9), rgba(20, 25, 35, 0.3)),
+        url("C:/Users/AGPC/Desktop/html/pictures/750x450_423020-book-my-show.jpg") center/cover;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-size: 25px;
+      padding: 40px;
+      color: white;
     }
 
-    .banner img {
-      width: 100%;
-      height: 100%;
+    .banner h1 {
+      margin: 0 0 12px;
+      font-size: 42px;
+    }
+
+    .banner p {
+      margin: 0 0 22px;
+      font-size: 17px;
+      color: #edf2f7;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e63946;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .section {
-      margin: 20px;
+      margin: 34px 6%;
     }
 
-    h2 {
-      margin-left: 5px;
-    }
-
-    .movies {
+    .section-header {
       display: flex;
-      gap: 15px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
     }
 
-    .movie {
-      width: 180px;
-      border: 2px solid black;
-      background-color: white;
-      padding: 10px;
+    .section h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .view-all {
+      color: #e63946;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
     }
 
     .poster {
-      height: 230px;
-      border: 2px solid black;
-      background-color: #dddddd;
-      margin-bottom: 10px;
+      height: 260px;
+      background: #ddd;
     }
 
-    .poster img {
+    .poster img,
+    .event img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 14px;
+    }
+
+    .card-content h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .card-content p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 13px;
     }
 
     .ad {
-      margin: 20px;
-      height: 100px;
-      border: 2px solid black;
-      background-color: white;
+      margin: 34px 6%;
+      padding: 28px;
+      border-radius: 8px;
+      background: #222831;
+      color: white;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      font-size: 22px;
     }
-   .ad img {
-    width: 100%;
-    height: 100%;
-   }
+
     .events {
-      display: flex;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
 
     .event {
-      width: 220px;
-      height: 130px;
-      border: 2px solid black;
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      height: 180px;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
     }
 
-    .event img {
-      width: 100%;
-      height: 90px;
+    .event p {
+      position: absolute;
+      left: 14px;
+      bottom: 12px;
+      margin: 0;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 2px 8px black;
     }
 
     .footer {
-      background-color: gray;
-      color: white;
-      padding: 25px;
+      margin-top: 42px;
+      padding: 28px;
+      background: #1f2933;
+      color: #dce1e7;
       text-align: center;
-      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .events {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-wrap: wrap;
+      }
+
+      .search {
+        flex-basis: 100%;
+      }
+
+      .cards,
+      .events {
+        grid-template-columns: 1fr;
+      }
+
+      .banner h1 {
+        font-size: 32px;
+      }
+
+      .ad {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
     }
   </style>
 </head>
+
 <body>
+  <header class="header">
+    <div class="logo">BookMyShow</div>
 
-  <div class="header">
-    <div class="logo">
-<img src="C:\Users\AGPC\Desktop\images (2).jpg" width="300">
-    </div>
     <div class="search">
-      <img src="C:\Users\AGPC\Desktop\108f39e2.jpg">
-
+      <input type="search" placeholder="Search for movies, events, plays, sports and activities" />
     </div>
-    <div class="city">City</div>
-    <div class="signin">Sign In</div>
-  </div>
 
-  <div class="menu">
-    <div>Movies</div>
-    <div>Events</div>
-    <div>Plays</div>
-    <div>Sports</div>
-    <div>Offers</div>
-  </div>
+    <button class="city">Select City</button>
+    <button class="signin">Sign In</button>
+  </header>
 
-  <div class="banner">
-    <img src="C:\Users\AGPC\Desktop\movies-bollywood-movies-wallpaper-preview.jpg" alt="My Image" alt="Main Banner">
-  </div>
+  <nav class="menu">
+    <a href="#">Movies</a>
+    <a href="#">Events</a>
+    <a href="#">Plays</a>
+    <a href="#">Sports</a>
+    <a href="#">Offers</a>
+  </nav>
 
-  <div class="section">
-    <h2>Recommended Movies</h2>
-    <div class="movies">
-      <div class="movie">
+  <section class="banner">
+    <div>
+      <h1>Book Your Next Entertainment Experience</h1>
+      <p>Discover movies, live events, sports, plays and premieres happening near you.</p>
+      <a href="#" class="btn">Explore Now</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Recommended Movies</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+
+    <div class="cards">
+      <div class="card">
         <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\dacoit1774353050_0.jpeg" alt="Movie 1">
+          <img src="C:/Users/AGPC/Desktop/html/pictures/dacoit1774353050_0.jpeg" alt="Movie poster">
         </div>
-        <p>Movie 1</p>
+        <div class="card-content">
+          <h3>Dacoit</h3>
+          <p>Action / Drama</p>
+        </div>
       </div>
 
-      <div class="movie">
+      <div class="card">
         <div class="poster">
-          <img src= "C:\Users\AGPC\Desktop\Tu-Meri-Main-Tera-Main-Tera-Tu-Meri-7-306x393.jpeg" alt="Movie 2">
+          <img src="C:/Users/AGPC/Desktop/html/pictures/Tu-Meri-Main-Tera-Main-Tera-Tu-Meri-7-306x393.jpeg" alt="Movie poster">
         </div>
-        <p>Movie 2</p>
+        <div class="card-content">
+          <h3>Tu Meri Main Tera</h3>
+          <p>Romance / Comedy</p>
+        </div>
       </div>
 
-      <div class="movie">
+      <div class="card">
         <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\Shaandaar-Bollywood-Movies-HD-Poster.jpg" alt="Movie 3">
+          <img src="C:/Users/AGPC/Desktop/html/pictures/Shaandaar-Bollywood-Movies-HD-Poster.jpg" alt="Movie poster">
         </div>
-        <p>Movie 3</p>
+        <div class="card-content">
+          <h3>Shaandaar</h3>
+          <p>Comedy / Drama</p>
+        </div>
       </div>
 
-      <div class="movie">
+      <div class="card">
         <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\988a5dee68b8ffea313264cff4c1425a.jpg" alt="Movie 4">
+          <img src="C:/Users/AGPC/Desktop/html/pictures/baaghi-brings-back-successful-team-heropanti-producer-sajid-nadiadwala-director-sabbir-khan.jpg" alt="Movie poster">
         </div>
-        <p>Movie 4</p>
+        <div class="card-content">
+          <h3>Baaghi</h3>
+          <p>Action / Thriller</p>
+        </div>
       </div>
 
-      <div class="movie">
+      <div class="card">
         <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\ok-jaanu-upcoming-bollywood-romantic-drama-film-directed-by-shaad-ali-produced-by-karan-johar.jpg" alt="Movie 5">
+          <img src="C:/Users/AGPC/Desktop/html/pictures/movies-bollywood-movies-wallpaper-preview (1).jpg" alt="Movie poster">
         </div>
-        <p>Movie 5</p>
+        <div class="card-content">
+          <h3>Bollywood Special</h3>
+          <p>Drama / Musical</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="ad">
-   
-    <img src="C:\Users\AGPC\Desktop\360_F_278612048_JtzBMCelCvrkZodAk5yF8tMPLqdLtKL2.jpg">
-  </div>
+  <section class="ad">
+    <div>
+      <h2>Exclusive Offers</h2>
+      <p>Save more on movie tickets, snacks and live event passes.</p>
+    </div>
+    <a href="#" class="btn">See Offers</a>
+  </section>
 
-  <div class="section">
-    <h2>Live Events</h2>
+  <section class="section">
+    <div class="section-header">
+      <h2>Live Events</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+
     <div class="events">
       <div class="event">
-        <img src="C:\Users\AGPC\Desktop\roshanposter-bang-bang-2014-2JD8N4G.jpg" alt="Event 1">
-        <p>Event 1</p>
+        <img src="C:\Users\AGPC\Desktop\html\pictures\hq720.jpg" alt="Event">
+        <p>Music Concert</p>
       </div>
 
       <div class="event">
-        <img src="C:\Users\AGPC\Desktop\baaghi-brings-back-successful-team-heropanti-producer-sajid-nadiadwala-director-sabbir-khan.jpg" alt="Event 2">
-        <p>Event 2</p>
+        <img src="C:\Users\AGPC\Desktop\html\pictures\Baaghi-4-18-255x191.jpg" alt="Event">
+        <p>Action Night</p>
       </div>
 
       <div class="event">
-        <img src="C:\Users\AGPC\Desktop\hq720.jpg" alt="Event 3">
-        <p>Event 3</p>
+        <img src="C:\Users\AGPC\Desktop\html\pictures\ok-jaanu-upcoming-bollywood-romantic-drama-film-directed-by-shaad-ali-produced-by-karan-johar.jpg" alt="Event">
+        <p>Comedy Evening</p>
       </div>
 
       <div class="event">
-        <img src="C:\Users\AGPC\Desktop\wp7009775.jpg" alt="Event 4">
-        <p>Event 4</p>
+        <img src="pictures/dacoit1774353050_0.jpeg" alt="Event">
+        <p>Theatre Play</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <h2>Premieres</h2>
-    <div class="movies">
-      <div class="movie">
-        <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\images (1).jpg" alt="Premiere 1">
-        </div>
-        <p>Premiere 1</p>
-      </div>
-
-      <div class="movie">
-        <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\movies-bollywood-movies-wallpaper-preview (1).jpg" alt="Premiere 2">
-        </div>
-        <p>Premiere 2</p>
-      </div>
-
-      <div class="movie">
-        <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\988a5dee68b8ffea313264cff4c1425a.jpg" alt="Premiere 3">
-        </div>
-        <p>Premiere 3</p>
-      </div>
-
-      <div class="movie">
-        <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\download.jpg" alt="Premiere 4">
-        </div>
-        <p>Premiere 4</p>
-      </div>
-
-      <div class="movie">
-        <div class="poster">
-          <img src="C:\Users\AGPC\Desktop\roshanposter-bang-bang-2014-2JD8N4G.jpg" alt="Premiere 5">
-        </div>
-        <p>Premiere 5</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    Footer
-  </div>
-
+  <footer class="footer">
+    © 2026 BookMyShow Demo. All rights reserved.
+  </footer>
 </body>
 </html>
